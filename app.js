@@ -3,7 +3,7 @@ const app = express()
 const port = 3000
 
 app.post('/', (req, res) => {
-    res.send('POST request to the homepage')
+    res.send('POST request to the homepage TEST')
   })
 
 app.listen(port, () => {

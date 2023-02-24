@@ -9,7 +9,7 @@ app.get('/', (req, res) => {
   
   // POST method route
 app.post('/', (req, res) => {
-res.send('POST request to the homepage')
+    console.log(req.body)
 })
 
 app.listen(port, () => {

@@ -1,22 +1,32 @@
 const express = require('express')
-const bp = require('body-parser')
+const {WebhookClient} = require('dialogflow-fulfillment')
 const app = express()
-const port = 3000
+app.use(express.json())
 
-app.use(bp.json())
-app.use(bp.urlencoded({ extended: true }))
-
-// GET method route
 app.get('/', (req, res) => {
-    res.send('GET request to the homepage');
-  })
-  
-  // POST method route
-app.post('/', (req, res) => {
-    console.log(req.body);
-    res.send('POST request to the homepage');
+    res.send("Server Is Working......")
+})
+/**
+* on this route dialogflow send the webhook request
+* For the dialogflow we need POST Route.
+* */
+app.post('/webhook', (req, res) => {
+    // get agent from request
+    let agent = new WebhookClient({request: req, response: res})
+    // create intentMap for handle intent
+    let intentMap = new Map();
+    // add intent map 2nd parameter pass function
+    intentMap.set('webhook-demo',handleWebHookIntent)
+    // now agent is handle request and pass intent map
+    agent.handleRequest(intentMap)
 })
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+function handleWebHookIntent(agent){
+    agent.add("Hello I am Webhook demo How are you...")
+}
+/**
+* now listing the server on port number 3000 :)
+* */
+app.listen(3000, () => {
+    console.log("Server is Running on port 3000")
 })

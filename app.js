@@ -22,7 +22,15 @@ app.post('/webhook', (req, res) => {
 })
 
 function handleWebHookIntent(agent){
-    agent.add("Hello I am Webhook demo How are you...")
+    if (agent.parameters.vaksin == "BCG") {
+        agent.add(`Vaksin BCG merupakan salah satu dari sejumlah vaksin wajib yang memberi perlindungan pada anak terhadap penyakit tuberkulosis atau TBC.  Fungsi vaksin BCG yang paling utama adalah mencegah dan mengurangi risiko terjangkit TBC. Tak hanya itu, pemberian vaksin BCG juga dapat mencegah TBC parah hingga 70 persen!!
+
+        Vaksin BCG di Indonesia umumnya diberikan pada bayi yang baru lahir atau saat bayi berusia 1 bulan. Jika ditunda, pemberian vaksin BCG paling lambat diberikan saat bayi berusia 2−3 bulan.
+        
+        Semoga informasi tersebut membantu! 😁`)
+    } else {
+        agent.add("Maaf saya belum bisa mengenali vaksin tersebut, untuk pertanyaan tersebut bisa menghubungi dokter kami pada link berikut")
+    }
 }
 /**
 * now listing the server on port number 3000 :)

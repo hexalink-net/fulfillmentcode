@@ -37,7 +37,7 @@ function handleWebHookIntentDetailVaksin(agent){
 
 function handleWebHookIntentPersyaratanVaksin(agent){
     if (agent.parameters.vaksin == "BCG") {
-        vaksinBCGCheckUp(agent.parameters)
+        vaksinBCGCheckUp(agent)
         return
     } else {
         agent.add("Maaf saya belum bisa mengenali vaksin tersebut, untuk pertanyaan tersebut bisa menghubungi dokter kami pada link berikut")
@@ -45,7 +45,8 @@ function handleWebHookIntentPersyaratanVaksin(agent){
     }
 }
 
-function vaksinBCGCheckUp(params){
+function vaksinBCGCheckUp(agent){
+    let params = agent.parameters
     let answer = `Anak anda boleh menerima vaksin BCG. Sebaiknya vaksin BCG diberikan segera setelah lahir atau segera mungkin sebelum bayi berumur 1 bulan. Bila berumur 3 
     bulan atau lebih, vaksin BCG dapat diberikan bila uji tuberkulin negatif.`
 

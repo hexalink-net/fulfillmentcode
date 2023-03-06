@@ -16,12 +16,13 @@ app.post('/webhook', (req, res) => {
     // create intentMap for handle intent
     let intentMap = new Map();
     // add intent map 2nd parameter pass function
-    intentMap.set('Detail Vaksin',handleWebHookIntent)
+    intentMap.set('Detail Vaksin',handleWebHookIntentDetailVaksin)
+    intentMap.set('Persyaratan Vaksin',handleWebHookIntentPersyaratanVaksin)
     // now agent is handle request and pass intent map
     agent.handleRequest(intentMap)
 })
 
-function handleWebHookIntent(agent){
+function handleWebHookIntentDetailVaksin(agent){
     if (agent.parameters.vaksin == "BCG") {
         agent.add(`Vaksin BCG merupakan salah satu dari sejumlah vaksin wajib yang memberi perlindungan pada anak terhadap penyakit tuberkulosis atau TBC.  Fungsi vaksin BCG yang paling utama adalah mencegah dan mengurangi risiko terjangkit TBC. Tak hanya itu, pemberian vaksin BCG juga dapat mencegah TBC parah hingga 70 persen!!
 
@@ -31,6 +32,15 @@ function handleWebHookIntent(agent){
     } else {
         agent.add("Maaf saya belum bisa mengenali vaksin tersebut, untuk pertanyaan tersebut bisa menghubungi dokter kami pada link berikut")
     }
+}
+
+function handleWebHookIntentPersyaratanVaksin(agent){
+    console.log(agent)
+    if (agent.parameters.vaksin == "BCG") {
+        if (agent.parameters.umur.ammount >= 0 && agent.parameters.umur.unit == "bulan") {
+            agent.add(``)
+        } 
+    } 
 }
 /**
 * now listing the server on port number 3000 :)

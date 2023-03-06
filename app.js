@@ -1,7 +1,7 @@
 const express = require('express')
 const {WebhookClient} = require('dialogflow-fulfillment')
 const app = express()
-import { disclaimer } from './constants'
+const {disclaimer} = require('./constants')
 app.use(express.json())
 
 app.get('/', (req, res) => {

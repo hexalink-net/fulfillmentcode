@@ -1,4 +1,4 @@
-const {disclaimer} = require('./constants')
+const {disclaimer} = require('../../constants')
 
 const vaksinBCGCheckUp = (agent) => {
     let params = agent.parameters

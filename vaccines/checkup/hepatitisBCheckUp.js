@@ -53,7 +53,7 @@ const vaksinHepatitisBCheckUp = (agent) => {
                 return
             }
         } 
-    } else if (params.alergi[0] != "tidak ada") {
+    } else if (params.alergi[0] != "tidak") {
         answer = `Jika anak anda memiliki riwayat alergi vaksin Hepatitis B, disarankan untuk konsultasi terlebih dahulu dengan dokter. Vaksin hepatitis B tidak boleh diberikan kepada orang yang alergi terhadap setiap bahan yang terkandung di dalam vaksin ini.
         `
         agent.add(answer + disclaimer)

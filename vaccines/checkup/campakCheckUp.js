@@ -33,7 +33,7 @@ const vaksinCampakCheckUp = (agent) => {
         `
         agent.add(answer + disclaimer)
         return
-    } else if (params.alergi[0] != "tidak ada") {
+    } else if (params.alergi[0] != "tidak") {
         answer = `Jika anak anda memiliki riwayat alergi vaksin campak, disarankan untuk konsultasi terlebih dahulu dengan dokter. Vaksin campak tidak boleh diberikan kepada orang yang alergi terhadap setiap bahan yang terkandung di dalam vaksin ini.
         `
         agent.add(answer + disclaimer)

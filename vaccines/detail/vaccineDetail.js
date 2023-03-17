@@ -10,7 +10,14 @@ const handleWebHookIntentDetailVaksin = (agent) => {
         Berdasarkan rekomendasi jadwal imunisasi dari Ikatan Dokter Anak Indonesia (IDAI), vaksin hepatitis B perlu diberikan sebanyak 4 kali pada bayi dan anak-anak. Jadwal vaksinasi hepatitis B pertama dilakukan saat bayi dilahirkan dan ketiga dosis selanjutnya diberikan ketika bayi berusia 2, 3, dan 4 bulan.
         Semoga informasi tersebut membantu! 😁`)
         return
-    } else {
+    } else if (agent.parameters.vaksin == "Campak") {
+        agent.add(`Vaksin campak adalah vaksin yang digunakan untuk mencegah penyakit campak. Vaksin campak termasuk dalam program imunisasi rutin lengkap yang dianjurkan oleh Kementerian Kesehatan Republik Indonesia.
+        Terdapat dua jenis vaksin yang digunakan untuk mencegah campak, yaitu vaksin MR dan vaksin MMR. Vaksin MR mencegah penyakit campak dan rubella, sedangkan vaksin MMR mencegah penyakit campak, rubella, dan gondongan.
+        Berdasarkan IDAI dianjurkan untuk umur 9 bulan diberikan vaksin MR. Bila sampai umur 12 bulan belum mendapat vaksin MR, dapat 
+        diberikan MMR. Umur 18 bulan berikan MR atau MMR. Umur 5 – 7 tahun berikan MR (dalam program BIAS kelas 1) atau MMR.
+        Semoga informasi tersebut membantu! 😁`)
+        return
+    }else {
         agent.add("Maaf saya belum bisa mengenali vaksin tersebut, untuk pertanyaan tersebut bisa menghubungi dokter kami pada link berikut")
         return
     }

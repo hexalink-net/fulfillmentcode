@@ -4,6 +4,8 @@ const app = express()
 const {vaksinBCGCheckUp} = require('./vaccines/checkup/bcgCheckUp')
 const {vaksinHepatitisBCheckUp} = require('./vaccines/checkup/hepatitisBCheckUp')
 const {vaksinCampakCheckUp} = require('./vaccines/checkup/campakCheckUp')
+const {vaksinPolioCheckUp} = require('./vaccines/checkup/polioCheckUp')
+const {vaksinDPTCheckUp} = require('./vaccines/checkup/dptCheckUp')
 const {handleWebHookIntentDetailVaksin} = require('./vaccines/detail/vaccineDetail')
 app.use(express.json())
 
@@ -35,6 +37,12 @@ function handleWebHookIntentPersyaratanVaksin(agent){
         return
     } else if (agent.parameters.vaksin == "Campak") {
         vaksinCampakCheckUp(agent)
+        return
+    } else if (agent.parameters.vaksin == "Polio") {
+        vaksinPolioCheckUp(agent)
+        return
+    } else if (agent.parameters.vaksin == "DPT") {
+        vaksinDPTCheckUp(agent)
         return
     } else {
         agent.add("Maaf saya belum bisa mengenali vaksin tersebut, untuk pertanyaan tersebut bisa menghubungi dokter kami pada link berikut")

@@ -14,7 +14,7 @@ const vaksinHepatitisBCheckUp = (agent) => {
     } else if (params.kondisi[0] != "sehat" ) {
         let conditions = params.kondisi.toString();
         answer = `Jika anak anda sedang mengalami ${conditions}. Sebaiknya dikonsultasikan kepada dokter terlebih dahulu. 
-        Disarankan untuk memberi tahu dokter jika anak anda menderita penyakit infeksi atau demam dan sedang menjalani pengobatan.
+Disarankan untuk memberi tahu dokter jika anak anda menderita penyakit infeksi atau demam dan sedang menjalani pengobatan.
         `
         agent.add(answer + disclaimer)
         return

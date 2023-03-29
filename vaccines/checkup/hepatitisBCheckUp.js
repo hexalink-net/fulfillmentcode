@@ -2,7 +2,10 @@ const {disclaimer} = require('../../constants')
 
 const vaksinHepatitisBCheckUp = (agent) => {
     let params = agent.parameters
-    const lastDate = params.tanggalTerakhirVaksin.date.split('T')[0];
+    let lastDate = ``
+    if (params.tanggalTerakhirVaksin != "belum") {
+        lastDate = params.tanggalTerakhirVaksin.date.split('T')[0];
+    }
     let answer = `Anak anda boleh menerima vaksin Hepatitis B. Menurut jadwal imunisasi yang direkomendasikan, vaksin hepatitis B pertama sebaiknya diberikan pada bayi usia 0-2 bulan. Jadi, jika anak Anda berusia ${params.umur.amount} ${params.umur.unit} dan belum mendapatkan vaksin hepatitis B pertama, maka sebaiknya segera memberikan vaksin tersebut.
     `
     
@@ -18,7 +21,9 @@ Disarankan untuk memberi tahu dokter jika anak anda menderita penyakit infeksi a
         `
         agent.add(answer + disclaimer)
         return
-    } else if (params.umur.unit == "month") {
+    } 
+
+    if (params.umur.unit == "month") {
         if (params.umur.amount == 1) {
             if (params.frekuensiVaksin >= 1) {
                 answer = `Vaksin Hepatitis B selanjutnya dapat anda berikan ketika anak anda berusia 2 bulan dengan jarak ideal minimal 4 minggu dari tanggal terakhir vaksin anakmu (${lastDate}). Berdasarkan rekomendasi jadwal imunisasi dari Ikatan Dokter Anak Indonesia (IDAI), vaksin hepatitis B perlu diberikan sebanyak 4 kali pada bayi dan anak-anak. Jadwal vaksinasi hepatitis B pertama dilakukan saat bayi dilahirkan dan ketiga dosis selanjutnya diberikan ketika bayi berusia 2, 3, dan 4 bulan.
@@ -53,9 +58,10 @@ Disarankan untuk memberi tahu dokter jika anak anda menderita penyakit infeksi a
                 return
             }
         } 
-    } else if (params.alergi[0] != "tidak") {
-        answer = `Jika anak anda memiliki riwayat alergi vaksin Hepatitis B, disarankan untuk konsultasi terlebih dahulu dengan dokter. Vaksin hepatitis B tidak boleh diberikan kepada orang yang alergi terhadap setiap bahan yang terkandung di dalam vaksin ini.
-        `
+    }
+    
+    if (params.alergi != "tidak") {
+        answer = `Jika anak anda memiliki riwayat alergi vaksin Hepatitis B, disarankan untuk konsultasi terlebih dahulu dengan dokter. Vaksin hepatitis B tidak boleh diberikan kepada orang yang alergi terhadap setiap bahan yang terkandung di dalam vaksin ini.`
         agent.add(answer + disclaimer)
         return
     }

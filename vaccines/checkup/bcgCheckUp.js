@@ -2,7 +2,8 @@ const {disclaimer} = require('../../constants')
 
 const vaksinBCGCheckUp = (agent) => {
     let params = agent.parameters
-    let answer = `Anak anda boleh menerima vaksin BCG. Namun perlu diingat, sebaiknya vaksin BCG diberikan segera setelah lahir atau segera mungkin sebelum bayi berumur 1 bulan. Bila berumur 3 bulan atau lebih, vaksin BCG dapat diberikan bila uji tuberkulin negatif.`
+    let answer = `Anak anda boleh menerima vaksin BCG. Namun perlu diingat, sebaiknya vaksin BCG diberikan segera setelah lahir atau segera mungkin sebelum bayi berumur 1 bulan. Bila berumur 3 bulan atau lebih, vaksin BCG dapat diberikan bila uji tuberkulin negatif.
+    `
 
     if (params.kondisi[0] != "sehat") {
         let conditions = params.kondisi.toString();
@@ -11,11 +12,15 @@ Secara umum, imunisasi BCG tidak boleh diberikan pada orang dengan gangguan sist
         `
         agent.add(answer + disclaimer)
         return
-    } else if (params.frekuensiVaksin > 0) {
+    }
+    
+    if (params.frekuensiVaksin > 0) {
         answer = `Vaksin BCG cukup diberikan sekali saja, jika anak anda sudah menerima vaksin BCG sebelumnya maka tidak diperlukan lagi.`
         agent.add(answer)
         return
-    } else if (params.alergi[0] != "tidak") {
+    }
+    
+    if (params.alergi != "tidak") {
         answer = `Secara umum, semua orang bisa mengambil vaksin BCG. Vaksin BCG terkandung dari bentuk lemah bakteri (kuman) yang menyebabkan TB`
         agent.add(answer + disclaimer)
         return

@@ -23,12 +23,12 @@ app.post('/webhook', (req, res) => {
     let intentMap = new Map();
     // add intent map 2nd parameter pass function
     intentMap.set('Detail Vaksin',handleWebHookIntentDetailVaksin)
-    intentMap.set('Persyaratan Vaksin',handleWebHookIntentPersyaratanVaksin)
+    intentMap.set('Diagnosis',handleWebHookIntentDiagnosis)
     // now agent is handle request and pass intent map
     agent.handleRequest(intentMap)
 })
 
-function handleWebHookIntentPersyaratanVaksin(agent){
+function handleWebHookIntentDiagnosis(agent){
     if (agent.parameters.vaksin == "BCG") {
         vaksinBCGCheckUp(agent)
         return

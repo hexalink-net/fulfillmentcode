@@ -5,6 +5,8 @@ const vaksinPolioCheckUp = (agent) => {
     let lastDate = ``
     let answer = `
     `
+    let info = `Direkomendasikan untuk anak mendapatkan kedua jenis vaksin polio yaitu OPV (tetes mulut) dan IPV (suntik) sebanyak dua kali. Berikut adalah contoh jadwal pengambilan vaksin: usia 0-1 bulan diberi OPV, kemudian usia 2 dan 3 bulan diberikan IPV tanpa OPV, kemudian usia 4 bulan diberikan OPV kembali
+    `
     if (params.tanggalTerakhirVaksin != "belum") {
         lastDate = params.tanggalTerakhirVaksin.date.split('T')[0];
     }
@@ -60,7 +62,7 @@ Disarankan untuk memberi tahu dokter jika anak anda menderita penyakit infeksi a
         if (params.umur.amount >= 0 && params.umur.amount <= 1) {
             answer = `Pada umur ${params.umur.amount} bulan, anak anda bisa diberikan vaksin polio dalam bentuk OPV (tetes mulut).
             `
-            agent.add(answer + disclaimer)
+            agent.add(answer + info + disclaimer)
             return
         } else if (params.frekuensiVaksin == 0){
             answer = `Jika anak telah melewatkan seluruh rangkaian dosis vaksin polio, maka dokter atau petugas kesehatan akan merekomendasikan jadwal yang tepat untuk memulai kembali vaksinasi polio sesuai dengan usia dan status imunisasi anak. Namun, biasanya jarak antara dosis pertama dan kedua adalah 4-8 minggu, dan jarak antara dosis kedua dan ketiga adalah 6-12 bulan.`
@@ -70,28 +72,28 @@ Disarankan untuk memberi tahu dokter jika anak anda menderita penyakit infeksi a
             if (params.umur.amount == 3 && params.frekuensiVaksin == 1){
                 answer = `Jika anakmu berumur ${params.umur.amount} bulan dan baru mendapatkan dosis satu, anak anda bisa diberikan vaksin polio dosis 2 dalam bentuk IPV (suntik) dan untuk vaksinasi polio selanjutnya antara dosis 2 dan 3 akan diperpendek dari 1 bulan menjadi 2-4 minggu.
                 `
-                agent.add(answer + disclaimer)
+                agent.add(answer + info + disclaimer)
                 return
             }
             answer = `Pada umur ${params.umur.amount} bulan, anak anda bisa diberikan vaksin polio dalam bentuk IPV (suntik).
             `
-            agent.add(answer + disclaimer)
+            agent.add(answer + info + disclaimer)
             return
         } else if (params.umur.ammount >= 4){
             if (params.frekuensiVaksin == 3){
                 answer = `Pada umur ${params.umur.amount} bulan, anak anda bisa diberikan vaksin polio dalam bentuk OPV (tetes mulut).
                 `
-                agent.add(answer + disclaimer)
+                agent.add(answer + info + disclaimer)
                 return
             } else if (params.frekuensiVaksin == 1){
                 answer = `Jika anakmu berumur ${params.umur.amount} bulan dan baru mendapatkan dosis satu, anak anda bisa diberikan vaksin polio dosis dua dalam bentuk IPV (suntik) dan untuk vaksinasi polio selanjutnya antara dosis 2 dan 3 akan diperpendek dari 1 bulan menjadi 2-4 minggu.
                 `
-                agent.add(answer + disclaimer)
+                agent.add(answer + info + disclaimer)
                 return
             } else if (params.frekuensiVaksin == 2){
                 answer = `Jika anakmu berumur ${params.umur.amount} bulan dan baru mendapatkan dosis dua, anak anda bisa diberikan vaksin polio dosis tiga dalam bentuk IPV (suntik) dan untuk vaksinasi polio selanjutnya antara dosis 3 dan 4 akan diperpendek dari 1 bulan menjadi 2-4 minggu.
                 `
-                agent.add(answer + disclaimer)
+                agent.add(answer + info + disclaimer)
                 return
             }
         }

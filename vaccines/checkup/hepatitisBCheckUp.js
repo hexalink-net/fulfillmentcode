@@ -8,7 +8,8 @@ const vaksinHepatitisBCheckUp = (agent) => {
     }
     let answer = `Anak anda boleh menerima vaksin Hepatitis B. Menurut jadwal imunisasi yang direkomendasikan, vaksin hepatitis B pertama sebaiknya diberikan pada bayi usia 0-2 bulan. Jadi, jika anak Anda berusia ${params.umur.amount} ${params.umur.unit} dan belum mendapatkan vaksin hepatitis B pertama, maka sebaiknya segera memberikan vaksin tersebut.
     `
-    
+    let info = `Pada usia 2, 3, dan 4 bulan vaksin Hepatitis B dapat diambil dalam bentuk kombinasi dengan vaksin DPT dan Hib
+    `
     if (params.kondisi[0] == "flu" || params.kondisi[0] == "batuk" || params.kondisi[1] == "pilek") {
         answer = `Anak yang sedang sakit, terutama dengan demam, sebaiknya menunda pemberian vaksin hepatitis B sampai dia pulih dari sakitnya. Namun, jika anak Anda hanya mengalami gejala ringan, seperti flu, maka kemungkinan besar tidak ada masalah dengan memberikan vaksin hepatitis B.
         `
@@ -69,11 +70,11 @@ Disarankan untuk memberi tahu dokter jika anak anda menderita penyakit infeksi a
    if (params.frekuensiVaksin > 0) {
         answer = `Anak anda boleh menerima vaksin Hepatitis B selanjutnya dengan rentang minimal 4 minggu dari tanggal terakhir vaksin anakmu (${lastDate}), dan dengan kondisi sehat.
             `
-        agent.add(answer + disclaimer)
+        agent.add(answer + info + disclaimer)
         return
     }
 
-    agent.add(answer + disclaimer)
+    agent.add(answer + info + disclaimer)
     return
 }
 

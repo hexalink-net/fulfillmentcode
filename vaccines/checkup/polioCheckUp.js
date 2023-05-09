@@ -5,8 +5,7 @@ const vaksinPolioCheckUp = (agent) => {
     let lastDate = ``
     let answer = `
     `
-    let info = `Direkomendasikan untuk anak mendapatkan kedua jenis vaksin polio yaitu OPV (tetes mulut) dan IPV (suntik) sebanyak dua kali. Berikut adalah contoh jadwal pengambilan vaksin: usia 0-1 bulan diberi OPV, kemudian usia 2 dan 3 bulan diberikan IPV tanpa OPV, kemudian usia 4 bulan diberikan OPV kembali
-    `
+    let info = `Direkomendasikan untuk anak mendapatkan kedua jenis vaksin polio yaitu OPV (tetes mulut) dan IPV (suntik) sebanyak dua kali. Berikut adalah contoh jadwal pengambilan vaksin: usia 0-1 bulan diberi OPV, kemudian usia 2 dan 3 bulan diberikan IPV tanpa OPV, kemudian usia 4 bulan diberikan OPV kembali.`
     if (params.tanggalTerakhirVaksin != "belum") {
         lastDate = params.tanggalTerakhirVaksin.date.split('T')[0];
     }

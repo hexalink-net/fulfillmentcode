@@ -4,7 +4,8 @@ const vaksinDPTCheckUp = (agent) => {
     let params = agent.parameters
     let answer = `Anak anda boleh menerima vaksin DPT. Menurut jadwal imunisasi yang direkomendasikan, vaksin diberikan sebanyak 3 kali sebagai imunisasi primer, yaitu 0,5 ml diberikan ketika anak berusia 2, 3, dan 4 bulan atau 2, 4, dan 6 bulan dengan rentang waktu antar pemberian adalah 4–6 minggu.
     `
-    let info = `Pada usia 2, 3, dan 4 bulan vaksin DPT dapat diambil dalam bentuk kombinasi dengan vaksin Hepatitis B dan Hib
+    let info = `
+    Pada usia 2, 3, dan 4 bulan vaksin DPT dapat diambil dalam bentuk kombinasi dengan vaksin Hepatitis B dan Hib (Vaksin Combo).
     `
     let lastDate = ``
     if (params.tanggalTerakhirVaksin != "belum") {
@@ -60,11 +61,11 @@ Disarankan untuk memberi tahu dokter jika anak anda menderita penyakit infeksi a
     if (params.frekuensiVaksin > 0) {
         answer = `Anak anda boleh menerima vaksin DPT selanjutnya dengan rentang minimal 4 - 6 minggu dari tanggal terakhir vaksin anakmu (${lastDate}), dan dengan kondisi sehat.
             `
-        agent.add(answer + disclaimer)
+        agent.add(answer + info + disclaimer)
         return
     }
 
-    agent.add(answer + disclaimer)
+    agent.add(answer + info + disclaimer)
     return
 }
 
